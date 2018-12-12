@@ -1,6 +1,6 @@
 <template>
   <div id="list">
-    <el-container style="height:672px;border:1px solid #eee">
+    <el-container style="height:665px;border:1px solid #eee">
       <el-header class="header">
         <h1>设备管理界面</h1>
         <p>
@@ -9,9 +9,9 @@
         </p>
       </el-header>
       <el-aside width="100%" style="background-color: rgb(238, 241, 246)">
-        <el-tabs type="border-card" tab-position="left" style="height: 608px;overflow: auto">
+        <el-tabs type="border-card" tab-position="left" style="height: 608px">
           <el-tab-pane label="设备访问">
-            <show-equip :tableData="tableData" :tableGroup="tableGroup"></show-equip>
+            <show-equip :tableData="tableData" :tableGroup="tableGroup" style="height:608px;overflow:auto"></show-equip>
           </el-tab-pane>
           <el-tab-pane label="设备管理">
             <manage-equip :tableData="tableData" :tableGroup="tableGroup"></manage-equip>

@@ -1,10 +1,11 @@
 <template>
   <div id="ManageEquip">
+    <div style="margin:10px;margin-top:0">未设置分组</div>
     <el-table
       ref="multipleTable"
       :data="tableData"
       tooltip-effect="dark"
-      style="width: 100%;height: 260px;border: 2px solid #DFE4ED;overflow: auto"
+      style="width: 100%;height: 200px;border: 2px solid #DFE4ED;overflow: auto"
       @selection-change="handleSelectionChange">
       <el-table-column
         type="selection"
@@ -57,13 +58,16 @@
         </template>
       </el-table-column>
     </el-table>
-    <div style="display: flex; justify-content: space-around">
+    <div style="display: flex; justify-content: space-around;margin-bottom:0">
       <i class="el-icon-d-arrow-left btn btn-down"></i>
       <i class="el-icon-d-arrow-left btn btn-up"></i>
     </div>
+    <div>设备群组</div>
+    <show-equip :tableData="tableData" :tableGroup="tableGroup" style="height:260px;overflow:auto;border:2px solid #DFE4ED"></show-equip>
   </div>
 </template>
 <script>
+import ShowEquip from '@/components/ShowEquip'
 export default {
   name: 'ManageEquip',
   data () {
@@ -73,7 +77,14 @@ export default {
     tableData: {
       type: Array,
       required: true
+    },
+    tableGroup: {
+      type: Array,
+      required: true
     }
+  },
+  components: {
+    ShowEquip
   }
 }
 </script>
