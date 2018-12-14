@@ -120,7 +120,29 @@ export default {
   },
   methods: {
     sendMsg () {
-      bus.$emit('getMsg', this.myEquip)
+      if (this.myEquip.length === 0) {
+        this.$message({
+          type: 'warning',
+          message: '您尚未提交数据！'
+        })
+      } else {
+        this.$confirm('提交之后不可修改，确认继续？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '提交成功!   请进入“用户管理”处查看您的权限。'
+          })
+          bus.$emit('getMsg', this.myEquip)
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消提交'
+          })
+        })
+      }
     },
     toDown () {
       let arr = this.multipleSelection
