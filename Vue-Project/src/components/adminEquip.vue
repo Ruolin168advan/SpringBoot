@@ -1,10 +1,10 @@
 <template>
-<div id="ShowEquip">
-  <el-button @click="clearFilter">显示全部设备</el-button>
+<div id="adminEquip">
+  <el-button @click="clearFilter" style="margin:20px">显示全部设备</el-button>
   <el-table
     ref="filterTable"
-    :data="tableData"
-    style="width: 100%">
+    :data="EquipData"
+    style="width: 90%;margin:0 auto">
     <el-table-column
       prop="num"
       label="设备编号"
@@ -46,26 +46,26 @@
         <i class="el-icon-search"></i>
       </template>
     </el-table-column>
-    <!-- <el-table-column
+    <el-table-column
       label="操作"
       width="120" align="center">
       <template slot-scope="scope">
         <i class="el-icon-edit" style="margin-right:10px"></i>
         <i class="el-icon-delete"></i>
       </template>
-    </el-table-column> -->
+    </el-table-column>
   </el-table>
 </div>
 </template>
 
 <script>
 export default {
-  name: 'ShowEquip',
+  name: 'adminEquip',
   data () {
     return {}
   },
   props: {
-    tableData: {
+    EquipData: {
       type: Array,
       required: true
     }
@@ -85,8 +85,12 @@ export default {
 </script>
 
 <style scoped>
-#showEquip {
-  overflow: auto
+#adminEquip {
+  overflow: hidden;
+  background: rgb(239, 248, 223);
+  height: 700px;
+  width: 90%;
+  margin: 0 auto
 }
 .succ {
   background: green;

@@ -133,7 +133,7 @@ export default {
         }).then(() => {
           this.$message({
             type: 'success',
-            message: '提交成功!   请进入“用户管理”处查看您的权限。'
+            message: '提交成功!   请进入“用户管理”查看您的权限。'
           })
           bus.$emit('getMsg', this.myEquip)
         }).catch(() => {
