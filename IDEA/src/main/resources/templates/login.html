@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+        .content{
+            margin: 100px;
+            background: #FAE8DB;
+            padding: 150px;
+        }
+        h1{
+            margin-bottom: 50px;
+        }
+        form{
+            margin: 0 auto;
+            background: #A4C14F;
+            border-radius: 5px;
+            padding: 50px;
+            width: 400px;
+        }
+        form div{
+            color: azure;
+            font-size: 26px;
+            margin-bottom: 40px;
+        }
+        form input{
+            outline: none;
+            border: none;
+            height: 26px;
+        }
+        .button{
+            width: 80px;
+            height: 40px;
+            border: 1px solid #589C41;
+            border-radius: 5px;
+            background: #FAE8DB;
+            color: #589C41;
+            font-size: 20px;
+        }
+        .button:hover{
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            background:#589C41 ;
+            color: #FAE8DB;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>welcome to login page</h1>
+        <form action="/login">
+            <div th:text="${msg}" style="color: red;font-size: 16px"></div>
+            <div>用户名称：<input type="text" name="uname"></div>
+            <div>用户密码：<input type="password" name="upwd"></div>
+            <input type="submit" value="登录" class="button">
+        </form>
+    </div>
+</body>
+</html>

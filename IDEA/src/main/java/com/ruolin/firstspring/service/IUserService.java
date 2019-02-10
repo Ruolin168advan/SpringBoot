@@ -1,0 +1,18 @@
+package com.ruolin.firstspring.service;
+
+import com.ruolin.firstspring.entity.User;
+import com.baomidou.mybatisplus.service.IService;
+
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author ruolin
+ * @since 2019-01-24
+ */
+public interface IUserService extends IService<User> {
+	User selectUserByUsername(String uname);
+
+//    User getUserByName(String uname,String upwd);
+}

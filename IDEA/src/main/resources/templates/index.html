@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<meta>
+    <meta charset="UTF-8"></meta>
+    <title>index</title>
+    <style>
+        .bg{
+            background: antiquewhite;
+            padding: 150px;
+            margin: 100px;
+            position: relative;
+        }
+        .content{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 200px;
+        }
+        .content p{
+            border: 2px solid #00aaaa;
+            height: 50px;
+            width: 400px;
+            border-radius: 5px;
+            font-size: 32px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .content p:hover{
+            background: #00aaaa;
+            color: antiquewhite;
+            border-radius: 5px;
+            font-size: 32px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .button{
+            text-align: center;
+            width: 150px;
+            position: absolute;
+            right: 150px;
+            display: flex;
+            justify-content: space-between;
+            top: 100px;
+        }
+        .button h3{
+            border: 1px solid #589C41;
+            color: #589C41;
+            width: 80px;
+            border-radius: 5px;
+        }
+        .button h3:hover{
+            background: #589C41;
+            color: #FAE8DB;
+            width: 80px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="bg">
+    <h1 style="font-weight: bold">welcome to index page</h1>
+    <div class="button">
+        <a href="login.html" th:href="@{/login}">登录</a>
+        <a>退出</a>
+    </div>
+
+    <div class="content">
+        <a href="showequip.html" th:href="@{/showequip}">进入用户界面</a>
+        <a href="getalluser.html" th:href="@{/getalluser}">进入管理员界面</a>
+    </div>
+</div>
+    <!---->
+    <!--<h2 th:text="${name}"></h2>-->
+
+    <!--<img src="img/timg.jpg">-->
+    <!--<img th:src="@{/img/timg.jpg}">-->
+    <!--<input type="text" th:value="${mobile}">-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<td>编号</td>-->
+        <!--</tr>-->
+        <!--<tr th:each="l:${list}">-->
+            <!--<td th:text="${l}"></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+</body>
+<script>
+    function isLogin() {
+
+    }
+</script>
+</html>
