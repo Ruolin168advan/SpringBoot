@@ -39,7 +39,7 @@ export default {
     login () {
       this.$axios({
         method: 'POST',
-        url: 'http://localhost:8080/login',
+        url: 'http://localhost:8080/user/login',
         data: {
           uname: this.loginInfo.uname,
           upwd: this.loginInfo.upwd

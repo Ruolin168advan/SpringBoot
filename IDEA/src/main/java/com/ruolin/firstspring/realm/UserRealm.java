@@ -1,15 +1,8 @@
 package com.ruolin.firstspring.realm;
 
-
-
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.ruolin.firstspring.entity.Permission;
 import com.ruolin.firstspring.entity.Role;
 import com.ruolin.firstspring.entity.User;
-import com.ruolin.firstspring.mapper.PermissionMapper;
 import com.ruolin.firstspring.mapper.RoleMapper;
-import com.ruolin.firstspring.service.IPermissionService;
 import com.ruolin.firstspring.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -21,17 +14,12 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
     private IUserService userService;
     @Autowired
     private RoleMapper roleMapper;
-    @Autowired
-    private PermissionMapper perMapper;
 
     // 这里做权限控制
     @Override
@@ -43,19 +31,7 @@ public class UserRealm extends AuthorizingRealm {
         Integer roleid = user.getRoleid();
         Role role = roleMapper.selectById(roleid);
         info.addRole(role.getRolename());
-
-        Wrapper<Permission> wrapper = new EntityWrapper<>();
-        wrapper.eq("roleid",role.getId());
-        List<Permission> selectList = perMapper.selectList(wrapper);
-        List<String> perlist = new ArrayList<>();
-        selectList.forEach(per -> {
-            perlist.add(per.getPername());
-        });
-        info.addStringPermissions(perlist);
-
-
         return info;
-//        return null;
     }
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken at) throws AuthenticationException {

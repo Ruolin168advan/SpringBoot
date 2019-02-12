@@ -1,6 +1,5 @@
 package com.ruolin.firstspring.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.ruolin.firstspring.entity.User;
@@ -35,14 +34,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
         return null;
     }
-
-//    @Override
-//    public User getUserByName(String uname,String upwd){
-//        Wrapper<User> wrapper =  new EntityWrapper<>();
-//        wrapper.eq(User.UNAME,uname).eq(User.UPWD,upwd);
-//        User user = userMapper.selectOne(wrapper);
-//
-//        return null;
-//    }
 
 }

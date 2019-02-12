@@ -205,7 +205,7 @@ export default {
 
 <style scoped>
 #adminEquip {
-  overflow: hidden;
+  overflow: auto;
   /* background: rgb(239, 248, 223); */
   height: 700px;
   width: 100%;

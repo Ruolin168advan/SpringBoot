@@ -33,12 +33,12 @@ public class MybatisPlusConfig {
     /**
      *   mybatis-plus分页插件
      */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor page = new PaginationInterceptor();
-        page.setDialectType("mysql");
-        return page;
-    }
+//    @Bean
+//    public PaginationInterceptor paginationInterceptor() {
+//        PaginationInterceptor page = new PaginationInterceptor();
+//        page.setDialectType("mysql");
+//        return page;
+//    }
     /**
      * 这里全部使用mybatis-autoconfigure 已经自动加载的资源。不手动指定
      * 配置文件和mybatis-boot的配置文件同步

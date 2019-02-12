@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 /**
  * <p>
@@ -38,25 +40,43 @@ public class UserController {
     @Autowired
     private IUserService userService;
     @Autowired
-    private UserMapper userMapper;
+    UserMapper userMapper;
 
-//    @RequiresPermissions("sys:search")
-    @RequestMapping(value="/{id}", method=RequestMethod.GET)  //查询
-    public Object getUser(@PathVariable Integer id){
-        return userService.selectById(id);
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
+    public Object login(@Valid @RequestBody User user){
+        System.out.println(user);
+        String uname = user.getUname();
+        String upwd = user.getUpwd();
+        Subject subject = SecurityUtils.getSubject();
+        AuthenticationToken token = new UsernamePasswordToken(uname, upwd);
+        try {
+            subject.login(token);
+            System.out.println(token);
+            EntityWrapper<User> wrapper = new EntityWrapper<>();
+            wrapper.where("uname="+"\'"+uname+"\'")
+                    .and("upwd="+"\'"+upwd+"\'");
+//            wrapper.eq("uname",uname).eq("upwd", upwd);
+            User resuser = userService.selectOne(wrapper);
+            return resuser;
+        } catch (UnknownAccountException e) {
+            return "用户不存在";
+        } catch (IncorrectCredentialsException e){
+            return "密码错误";
+        } catch (Exception e) {
+            return "failed login"+user;
+        }
     }
 
-//    @RequiresRoles("admin")
     @RequestMapping(value="/all", method=RequestMethod.GET) //查询全部用户(非管理员)
     public Object getAllUser(){
         Wrapper<User> wrapper = new EntityWrapper<>();
+        wrapper.eq(User.ROLEID, 2);
         wrapper.orderBy(User.ID,true);
         return userMapper.selectList(wrapper);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     public Object getUserByUname(@RequestBody User user) {
-
         EntityWrapper<User> qryWrapper = new EntityWrapper<>();
         qryWrapper.where("uname="+"\""+user.getUname()+"\"")
                 .and("upwd="+"\""+user.getUpwd()+"\"");
@@ -65,7 +85,6 @@ public class UserController {
         return resuser;
     }
 
-//    @RequiresRoles("admin")
     @RequestMapping(value="/add", method=RequestMethod.POST)  //添加用户
     public Object addUser(@RequestBody User user){
         System.out.println(user);
@@ -73,7 +92,6 @@ public class UserController {
         return user;
     }
 
-//    @RequiresPermissions("sys:delete")
     @RequestMapping(value="/delete", method=RequestMethod.POST) //删除用户
     public Object deleteuser(@RequestBody User user){
         Integer id = user.getId();
@@ -81,7 +99,6 @@ public class UserController {
         return userMapper.deleteById(id);
     }
 
-//    @RequiresRoles("admin")
     @RequestMapping(value="/update", method=RequestMethod.PUT)
     public Object updateUser(@RequestBody User user){
          user.getId();

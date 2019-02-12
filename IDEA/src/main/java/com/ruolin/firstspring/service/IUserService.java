@@ -2,6 +2,7 @@ package com.ruolin.firstspring.service;
 
 import com.ruolin.firstspring.entity.User;
 import com.baomidou.mybatisplus.service.IService;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -14,5 +15,4 @@ import com.baomidou.mybatisplus.service.IService;
 public interface IUserService extends IService<User> {
 	User selectUserByUsername(String uname);
 
-//    User getUserByName(String uname,String upwd);
 }

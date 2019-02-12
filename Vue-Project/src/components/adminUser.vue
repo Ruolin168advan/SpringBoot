@@ -49,13 +49,13 @@
       <el-form-item label="用户密码" :label-width="formLabelWidth">
         <el-input v-model="userInfo.upwd" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="用户权限" :label-width="formLabelWidth">
+      <!-- <el-form-item label="用户权限" :label-width="formLabelWidth">
         <el-select v-model="userInfo.roleid" placeholder="请选择用户权限">
           <el-option label="1" value=1></el-option>
           <el-option label="2" value=2></el-option>
         </el-select>
         <span>1 - 管理员， 2 - 普通用户</span>
-      </el-form-item>
+      </el-form-item> -->
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -112,7 +112,7 @@ export default {
       this.dialogTitle = '修改用户信息'
       console.log(row)
       this.userInfo.id = row.id
-      this.userInfo.roleid = row.roleid
+      this.userInfo.roleid = 2
       this.userInfo.uname = row.uname
       this.userInfo.upwd = row.upwd
     },
@@ -153,7 +153,7 @@ export default {
     },
     save () {
       this.dialogFormVisible = false
-      this.userInfo.roleid = parseInt(this.userInfo.roleid)
+      this.userInfo.roleid = 2
       console.log(this.userInfo)
       if (this.isUpdate) {
         this.$axios({

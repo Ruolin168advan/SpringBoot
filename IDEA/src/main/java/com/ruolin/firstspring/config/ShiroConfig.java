@@ -1,6 +1,6 @@
 package com.ruolin.firstspring.config;
 
-import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+//import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.ruolin.firstspring.realm.UserRealm;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator;
@@ -134,14 +134,6 @@ public class ShiroConfig {
         AuthorizationAttributeSourceAdvisor aasa=new AuthorizationAttributeSourceAdvisor();
         aasa.setSecurityManager(getDefaultWebSecurityManager(userRealm));
         return aasa;
-    }
-    /*
-    * 配置ShiroDialect，用于thymeleaf和shiro标签配合使用
-    *
-    * */
-    @Bean
-    public ShiroDialect getShiroDialect(){
-        return new ShiroDialect();
     }
 }
 
