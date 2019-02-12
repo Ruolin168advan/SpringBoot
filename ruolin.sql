@@ -20,18 +20,6 @@ CREATE TABLE role(
 );
 INSERT INTO role VALUES(1,'admin');
 INSERT INTO role VALUES(2,'user');
-
-CREATE TABLE permission(
-  id SMALLINT AUTO_INCREMENT,
-  pername VARCHAR(16),
-  roleid SMALLINT,
-  PRIMARY KEY (id)
-);
-INSERT INTO permission VALUES(null,'sys:add',1);
-INSERT INTO permission VALUES(null,'sys:edit',1);
-INSERT INTO permission VALUES(null,'sys:delete',1);
-INSERT INTO permission VALUES(null,'sys:search',1);
-
  
 CREATE TABLE equipment(
   id SMALLINT AUTO_INCREMENT,
@@ -59,11 +47,9 @@ CREATE TABLE equipUser(
   PRIMARY KEY (id)
 );
 INSERT INTO equipUser VALUES(null,1,1);
-INSERT INTO equipUser VALUES(null,1,2);
 INSERT INTO equipUser VALUES(null,1,3);
 INSERT INTO equipUser VALUES(null,1,4);
 INSERT INTO equipUser VALUES(null,1,5);
-INSERT INTO equipUser VALUES(null,1,6);
 INSERT INTO equipUser VALUES(null,1,6);
 INSERT INTO equipUser VALUES(null,1,7);
 INSERT INTO equipUser VALUES(null,2,1);
